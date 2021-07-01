@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<ctype.h>
+#define Maxsize 500
+void replace(char a[])
+{
+    int i=0;
+    int count=0;
+    int j;
+    while(1)
+    {
+        if(isspace(a[i])&&isspace(a[i+1]))
+            break;
+        else if(!isspace(a[i]))
+        {
+            count++;
+        }
+        else if(isspace(a[i])&&(!isspace(a[i+1])))
+        {
+            for(j=i-1;j>i-count-1;j--)
+            {
+               printf("%c",a[i]);
+            }
+            count=0;
+            printf(" ");
+        }
+        i++;
+    }
+    for(j=0;j<i;j++)
+    {
+        printf("%c",a[j]);
+    }
+}
+int main()
+{
+    char str[Maxsize];
+    gets(str);
+    replace(str);
+}
+
